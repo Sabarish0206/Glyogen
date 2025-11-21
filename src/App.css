@@ -1,0 +1,38 @@
+:root {
+  /* Colors from Blueprint */
+  --color-teal: #1e706b;
+  --color-gold: #ffc72c;
+  --color-white: #ffffff;
+  --color-text-dark: #333333;
+
+  /* Typography */
+  --font-header: 'Montserrat', sans-serif; /* Placeholder */
+  --font-body: 'Lato', sans-serif; /* Placeholder */
+
+  /* Spacing */
+  --padding-section: 80px 40px;
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+/* Utility class for primary CTA */
+.btn-primary {
+  background-color: var(--color-gold);
+  color: var(--color-teal);
+  font-weight: bold;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: #ffda6a; /* Lighter gold on hover */
+}
