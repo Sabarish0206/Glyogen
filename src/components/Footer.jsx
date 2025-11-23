@@ -21,7 +21,7 @@ const Footer = () => {
     textTransform: 'uppercase',
     fontWeight: 'bold',
     marginBottom: '20px',
-    fontSize: '1rem',
+    fontSize: '1rem', // Base size for desktop headings
     letterSpacing: '1px'
   };
 
@@ -30,7 +30,7 @@ const Footer = () => {
     textDecoration: 'none',
     display: 'block',
     marginBottom: '10px',
-    fontSize: '0.95rem',
+    fontSize: '0.95rem', // Base size for desktop links/text
     transition: 'color 0.3s',
   };
 
@@ -58,7 +58,7 @@ const Footer = () => {
     borderRadius: '5px'
   }
   
-  // --- CSS with Media Queries for Responsiveness ---
+  // --- CSS with Media Queries for Responsiveness (UPDATED) ---
   const responsiveCSS = `
     .footer-base {
       background-color: #022A70; 
@@ -77,12 +77,67 @@ const Footer = () => {
       /* Default: Desktop/Laptop (4 columns - the original logic) */
       grid-template-columns: repeat(4, 1fr); 
     }
+    
+    .footer-grid-container h4 {
+        font-size: 1rem; /* Base font size for h4/headings */
+    }
+    .footer-grid-container a, 
+    .footer-grid-container p {
+        font-size: 0.95rem; /* Base font size for links/text */
+    }
 
     .footer-copyright {
       margin-top: 40px; 
       padding-top: 20px; 
       text-align: center; 
       border-top: 1px solid rgba(255,255,255,0.1); 
+      font-size: 0.85rem; /* Base font size for copyright */
+    }
+
+    /* =================================================== */
+    /* NEW: Laptop L (1440px and up) */
+    /* =================================================== */
+    @media (min-width: 1400px) {
+        .footer-base {
+            padding: 80px 60px; /* Increased vertical and horizontal padding */
+        }
+        .footer-grid-container {
+            max-width: 2000px; /* Increased max width for the content */
+            gap: 40px;
+        }
+        .footer-grid-container h4 {
+            font-size: 1.1rem; /* Slightly larger headings */
+        }
+        .footer-grid-container a, 
+        .footer-grid-container p {
+            font-size: 1.0rem; /* Slightly larger links/text */
+        }
+        .footer-copyright {
+            font-size: 0.9rem; /* Slightly larger copyright text */
+        }
+    }
+
+    /* =================================================== */
+    /* NEW: 4K/Extra-Large Screens (2560px and up) */
+    /* =================================================== */
+    @media (min-width: 2560px) {
+        .footer-base {
+            padding: 120px 80px; /* Much more vertical space */
+        }
+        .footer-grid-container {
+            max-width: 1800px; /* Set a large max width for 4K displays */
+            gap: 60px;
+        }
+        .footer-grid-container h4 {
+            font-size: 1.4rem; /* Scale headings significantly */
+        }
+        .footer-grid-container a, 
+        .footer-grid-container p {
+            font-size: 1.2rem; /* Scale links/text significantly */
+        }
+        .footer-copyright {
+            font-size: 1.0rem; /* Larger copyright text */
+        }
     }
 
     /* --- Media Query for TABLET (e.g., 768px to 1024px) --- */
@@ -106,6 +161,22 @@ const Footer = () => {
     }
   `;
 
+  // NOTE: Headings and links must now be updated to use the CSS font size
+  // and remove the hardcoded inline font size if the logic is to be managed 
+  // fully by the new media queries. I'll make a minor adjustment to remove 
+  // font-size from the inline styles to allow the new CSS to take effect.
+  
+  const updatedHeadingStyle = {
+    ...headingStyle,
+    fontSize: 'unset', // Allow CSS to control this
+  };
+
+  const updatedLinkStyle = {
+    ...linkStyle,
+    fontSize: 'unset', // Allow CSS to control this
+  };
+
+
   return (
     <>
       {/* 
@@ -121,12 +192,12 @@ const Footer = () => {
         >
           {/* === COLUMN 1: KEY CONTACTS === */}
           <div>
-            <h4 style={headingStyle}>Key Contacts</h4>
+            <h4 style={updatedHeadingStyle}>Key Contacts</h4>
             {contacts.map((contact, index) => (
               <a 
                 key={index}
                 href={`tel:${contact.number.replace(/\s/g, '')}`} 
-                style={linkStyle}
+                style={updatedLinkStyle}
                 {...hoverEffect}
               >
                 {contact.name}
@@ -138,36 +209,36 @@ const Footer = () => {
 
           {/* === COLUMN 2: EMAIL & LINKS === */}
           <div>
-            <h4 style={headingStyle}>Email Us</h4>
+            <h4 style={updatedHeadingStyle}>Email Us</h4>
             <a 
               href={`mailto:${email}`} 
-              style={linkStyle}
+              style={updatedLinkStyle}
               {...hoverEffect}
             >
               {email}
             </a>
             
-            <h4 style={{ ...headingStyle, marginTop: '20px' }}>Company</h4>
+            <h4 style={{ ...updatedHeadingStyle, marginTop: '20px' }}>Company</h4>
             {/* Placeholder Nav Links */}
-            <a href="#about" style={linkStyle} {...hoverEffect}>About Us</a>
-            <a href="#Address" style={linkStyle} {...hoverEffect}>Company Profile</a>
-            <a href="#contact" style={linkStyle} {...hoverEffect}>Contact Details</a>
+            <a href="#about" style={updatedLinkStyle} {...hoverEffect}>About Us</a>
+            <a href="#Address" style={updatedLinkStyle} {...hoverEffect}>Company Profile</a>
+            <a href="#contact" style={updatedLinkStyle} {...hoverEffect}>Contact Details</a>
           </div>
 
           {/* === COLUMN 3: OFFICES === */}
           <div>
             
 
-            <h4 style={{ ...headingStyle, marginTop: '20px' }}>Branch</h4>
-            <p style={{ ...linkStyle, cursor: 'default', whiteSpace: 'pre-line', lineHeight: '1.4' }}>
+            <h4 style={{ ...updatedHeadingStyle, marginTop: '20px' }}>Branch</h4>
+            <p style={{ ...updatedLinkStyle, cursor: 'default', whiteSpace: 'pre-line', lineHeight: '1.4' }}>
               {branchOffice}
             </p>
           </div>
 
           {/* === COLUMN 4: FOLLOW US === */}
           <div style={{ minWidth: '200px' }}>
-            <h4 style={headingStyle}>Get In Touch</h4>
-            <p style={{ color: WHITE_COLOR, fontSize: '0.9rem', marginBottom: '20px' }}>
+            <h4 style={updatedHeadingStyle}>Get In Touch</h4>
+            <p style={{ ...updatedLinkStyle, cursor: 'default', lineHeight: '1.4', marginBottom: '20px' }}>
               Get in touch to learn more about our clinical research services and
              how we can assist you in oncology drug evaluation.
             </p>
@@ -194,7 +265,7 @@ const Footer = () => {
 
         {/* Copyright Section */}
         <div className="footer-copyright">
-          <p style={{ margin: 0, fontSize: '0.85rem' }}>
+          <p style={{ margin: 0 }}>
             &copy; {currentYear} Glyogen Clinical Research. All rights reserved.
           </p>
         </div>

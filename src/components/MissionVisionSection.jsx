@@ -53,6 +53,64 @@ const MissionVisionSection = () => {
             margin-bottom: 20px;
             font-size: 2rem;
           }
+          
+          .mv-box p {
+            font-size: 1rem;
+          }
+          
+          /* =================================================== */
+          /* NEW: Laptop L (1440px and up) */
+          /* =================================================== */
+          @media (min-width: 1400px) {
+            .mv-wrapper {
+                padding: 90px 0; /* More vertical space */
+            }
+            .mv-section {
+                max-width: 1800px; /* Set a large max width for the content */
+                gap: 60px;
+                padding: 0 80px;
+            }
+            .mv-box {
+                padding: 60px;
+                flex-basis: 550px; /* Allow boxes to be much wider */
+            }
+            .mv-box h2 {
+                font-size: 2.8rem; /* Scale heading size */
+            }
+            .mv-box p {
+                font-size: 1.4rem; /* Scale paragraph size */
+            }
+          }
+
+          /* =================================================== */
+          /* NEW: 4K/Extra-Large Screens (2560px and up) */
+          /* =================================================== */
+          @media (min-width: 2560px) {
+            .mv-wrapper {
+                padding: 90px 0; /* More vertical space */
+            }
+            .mv-section {
+                max-width: 1800px; /* Set a large max width for the content */
+                gap: 60px;
+                padding: 0 80px;
+            }
+            .mv-box {
+                padding: 60px;
+                flex-basis: 550px; /* Allow boxes to be much wider */
+            }
+            .mv-box h2 {
+                font-size: 2.8rem; /* Scale heading size */
+            }
+            .mv-box p {
+                font-size: 1.4rem; /* Scale paragraph size */
+            }
+          }
+
+          /* Laptop/Desktop (≥1024px) */
+          @media (min-width: 1024px) {
+            /* NOTE: Styles here are now the default for 1024px until 1440px, 
+                     and are overridden by the new queries above. */
+          }
 
           /* Tablet (≤1024px) */
           @media (max-width: 1024px) {

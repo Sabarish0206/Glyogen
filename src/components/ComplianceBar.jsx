@@ -21,7 +21,7 @@ const AddressSection = () => {
   const DARK_TEXT_COLOR = '#333333';
   const LIGHT_BG = '#f5f5f5'; // Subtle background color
 
-  // --- CSS with Media Queries for Responsiveness ---
+  // --- CSS with Media Queries for Responsiveness (UPDATED) ---
   const responsiveCSS = `
     /* Base Section Wrapper (Full Width Background) */
     .address-wrapper {
@@ -67,9 +67,6 @@ const AddressSection = () => {
       text-transform: uppercase;
     }
     
-    /* Removed the span from the old design for simplicity, keeping only <h2>Location</h2> */
-
-
     /* Address Text */
     .address-text {
       margin-top: 20px;
@@ -98,6 +95,7 @@ const AddressSection = () => {
       border: 2px solid ${THEME_COLOR};
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       display: inline-block;
+      font-size: 1.0em;
     }
 
     .map-button:hover {
@@ -107,7 +105,7 @@ const AddressSection = () => {
       transform: translateY(-2px);
     }
     
-    /* Map Container for IFRAME (REPLACES .map-placeholder) */
+    /* Map Container for IFRAME */
     .map-container {
         width: 100%;
         max-width: 500px;
@@ -123,6 +121,62 @@ const AddressSection = () => {
         height: 100%;
         border: none;
         display: block;
+    }
+    
+    /* =================================================== */
+    /* NEW: Laptop L (1440px and up) */
+    /* =================================================== */
+    @media (min-width: 1400px) {
+        .address-wrapper {
+            padding: 100px 0;
+        }
+        .address-content-container {
+            max-width:  80%;
+            padding: 0 60px;
+            gap: 80px;
+        }
+        .address-details-side h2 {
+            font-size: 4em;
+        }
+        .address-line {
+            font-size: 1.3em;
+        }
+        .map-button {
+            padding: 14px 35px;
+            font-size: 1.1em;
+        }
+        .map-container {
+            max-width: 100%;
+            height: 420px; /* Taller map */
+        }
+    }
+
+    /* =================================================== */
+    /* NEW: 4K/Extra-Large Screens (2560px and up) */
+    /* =================================================== */
+    @media (min-width: 2560px) {
+        .address-wrapper {
+            padding: 140px 0;
+        }
+        .address-content-container {
+            max-width: 2000px;
+            padding: 0 100px;
+            gap: 120px;
+        }
+        .address-details-side h2 {
+            font-size: 5.5em; /* Significantly larger heading */
+        }
+        .address-line {
+            font-size: 1.8em; /* Significantly larger text */
+        }
+        .map-button {
+            padding: 20px 50px;
+            font-size: 1.4em;
+        }
+        .map-container {
+            max-width: 1000px;
+            height: 550px; /* Much larger map */
+        }
     }
 
 

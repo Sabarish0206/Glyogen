@@ -31,7 +31,7 @@ const ContactFormSection = () => {
     color: '#333333' 
   };
   
-  // --- CSS with Media Queries for Responsiveness ---
+  // --- CSS with Media Queries for Responsiveness (UPDATED) ---
   const responsiveCSS = `
     .contact-section-container {
       display: flex;
@@ -41,11 +41,20 @@ const ContactFormSection = () => {
       background-color: ${WHITE_COLOR};
       max-width: 1200px; /* Constrain max width for desktop */
       margin: 0 auto; /* Center the container */
+      box-sizing: border-box; /* Ensure padding is included in width */
     }
 
     .contact-details {
       flex: 1;
       padding-right: 40px; /* Default gap between text and image */
+    }
+    
+    .contact-details h2 {
+        font-size: 36px; /* Default heading size */
+    }
+    
+    .contact-details p, .contact-details div {
+        font-size: 18px; /* Default text size */
     }
 
     .contact-image-container {
@@ -69,13 +78,71 @@ const ContactFormSection = () => {
       border-radius: 8px;
       object-fit: cover;
     }
+    
+    /* =================================================== */
+    /* NEW: Laptop L (1440px and up) */
+    /* =================================================== */
+    @media (min-width: 1400px) {
+        .contact-section-container {
+            max-width:100%; /* Increased max width */
+            padding: 80px 100px; /* Increased padding */
+        }
+        .contact-details {
+            padding-right: 60px; /* Increased gap */
+        }
+        .contact-details h2 {
+            font-size: 44px; /* Slightly larger heading */
+        }
+        .contact-details p, .contact-details div {
+            font-size: 20px; /* Slightly larger text */
+        }
+        .contact-image {
+            width: 400px; /* Slightly larger image */
+        }
+    }
 
+    /* =================================================== */
+    /* NEW: 4K/Extra-Large Screens (2560px and up) */
+    /* =================================================== */
+    @media (min-width: 2560px) {
+        .contact-section-container {
+            max-width: 100%; /* Set a large max width for 4K displays */
+            padding: 120px 150px; /* Much more padding */
+        }
+        .contact-details {
+            padding-right: 100px; /* Significant gap */
+        }
+        .contact-details h2 {
+            font-size: 60px; /* Scale heading significantly */
+        }
+        .contact-details p, .contact-details div {
+            font-size: 28px; /* Scale text significantly */
+        }
+        .contact-image {
+            width: 550px; /* Much larger image */
+        }
+        .image-wrapper {
+            padding: 30px; /* Larger padding around image */
+        }
+    }
+    @media (min-width: 1200px) {
+        .contact-section-container {
+            max-width: 100%; /* Increased max width to fill space */
+            padding: 60px 80px; /* Adjusted padding to maintain margin */
+        }
+        /* Optionally slightly increase text/image size here if needed */
+        .contact-details h2 {
+            font-size: 38px;
+        }
+    }
+    
     /* --- Media Query for TABLET & Smaller Screens (e.g., max-width: 1024px) --- */
     @media (max-width: 1024px) {
       .contact-section-container {
         /* Switch to column layout (stacked) */
         flex-direction: column; 
         padding: 40px 40px;
+        max-width:2000px;
       }
       
       .contact-details {
@@ -121,6 +188,19 @@ const ContactFormSection = () => {
     }
   `;
 
+  // Adjust inline styles to allow CSS to control the font-size (as it's managed 
+  // by the media queries now).
+  const updatedHeadingStyle = { 
+    ...headingStyle, 
+    fontSize: 'unset' // Let CSS manage
+  };
+  
+  const updatedDetailsStyle = { 
+    marginBottom: '20px', 
+    fontSize: 'unset' // Let CSS manage
+  };
+
+
   return (
     <>
       {/* Inject CSS with Media Queries */}
@@ -130,16 +210,16 @@ const ContactFormSection = () => {
         
         {/* Left Side — Contact Details */}
         <div className="contact-details">
-          <h2 style={headingStyle}>
+          <h2 style={updatedHeadingStyle}>
             Contact Us
           </h2>
 
-          <p style={{ marginBottom: '20px', color: '#333', lineHeight: 1.6 }}>
+          <p style={{ ...updatedDetailsStyle, color: '#333', lineHeight: 1.6 }}>
             Get in touch to learn more 
             about our clinical research services and how we can assist you in oncology drug evaluation.
           </p>
 
-          <div style={{ marginBottom: '20px', fontSize: '18px' }}>
+          <div style={updatedDetailsStyle}>
             📞 <strong>R.Vinoth Kumar</strong>+91 88830 38883
             <br/>
             📞 <strong>S.GURUNATHAN</strong> +91 9629679286
@@ -149,7 +229,7 @@ const ContactFormSection = () => {
             📞 <strong>V.VIKRAM</strong> +91 8248624130
           </div>
 
-          <div style={{ marginBottom: '20px', fontSize: '18px' }}>
+          <div style={updatedDetailsStyle}>
             ✉️{' '}
             <a
               href="mailto:info@glyogen.com "

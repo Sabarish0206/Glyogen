@@ -81,15 +81,58 @@ const HeroSection = () => {
 
             .hero h1 {
               font-size: 3.5em;
+              max-width: 1000px; /* Constrain heading width */
             }
 
             .hero p {
               font-size: 1.2em;
+              max-width: 800px; /* Constrain paragraph width */
             }
 
             .hero a {
               padding: 14px 36px;
               font-size: 1.1em;
+            }
+          }
+
+          /* --- NEW: Laptop L (1440px and up) --- */
+          @media (min-width: 1400px) {
+            .hero {
+              min-height: 95vh;
+            }
+            .hero h1 {
+              font-size: 4.0em; /* Slightly larger heading */
+              max-width: 3000px; /* Allow heading to stretch more */
+            }
+
+            .hero p {
+              font-size: 1.3em; /* Slightly larger paragraph */
+              max-width: 3000px; /* Allow paragraph to stretch more */
+            }
+
+            .hero a {
+              padding: 16px 40px; /* Larger button */
+              font-size: 1.2em;
+            }
+          }
+          
+          /* --- NEW: 4K / Extra-Large Screens (2560px and up) --- */
+          @media (min-width: 2560px) {
+            .hero {
+              min-height: 95vh;
+              padding: 150px 60px;
+            }
+            .hero h1 {
+              font-size: 5.0em; /* Significantly larger heading */
+              max-width: 4000px; /* Allow content to use more screen width */
+            }
+            .hero p {
+              font-size: 1.6em; /* Significantly larger paragraph */
+              max-width: 4000px;
+            }
+            .hero a {
+              padding: 20px 50px; /* Much larger button */
+              font-size: 1.4em;
             }
           }
 
