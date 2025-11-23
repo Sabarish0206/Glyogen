@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import contactImage from '../assets/contact-image.png';
 
 const ContactFormSection = () => {
   const [formData, setFormData] = useState({ name: '', email: '', organization: '', message: '' });
@@ -244,7 +245,7 @@ const ContactFormSection = () => {
         <div className="contact-image-container">
           <div className="image-wrapper">
             <img
-              src="/src/assets/contact-image.png" 
+              src={contactImage} 
               alt="Contact Mavigen"
               className="contact-image"
             />
